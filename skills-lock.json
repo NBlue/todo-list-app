@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "skills": {
+    "ask": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "60cdf7fdd934d0823e464829784fe11270021e11152798700daf9b4eee1f7538"
+    },
+    "bootstrap": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "82a3a9304d765cc0517046b681a6bec4154c69a5a3b240020c80390537d9713e"
+    },
+    "brainstorm": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "d0ffb25a58ca060c3945e80942a5a365ace0b06a4b1753efe3cdae5cdcc5280a"
+    },
+    "docs": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "8134ca75a39aeb074b12c810ac3ce5627aab5e78fd204e4e4d1389a683e14763"
+    },
+    "execute-plan": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "392c3d2f5f67e432c064a5f45400c2905e4240924854e046cce1c0fceee415b3"
+    },
+    "fix": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "0c7982a98a037dab68d6667a71dcf5918b036b76854428640920e8261c79ffd7"
+    },
+    "quick-implement": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "7f578a6582458d6c8033d9f701fd2440b10cfa93a37348fffe5e153b10f1a513"
+    },
+    "review": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "2fa0c0e42500ab16fec30d738a489e8e95ed28ae9fb0e8f7480bf5f4de1322c0"
+    },
+    "write-plan": {
+      "source": "buiducnhat/agent-skills",
+      "sourceType": "github",
+      "computedHash": "cf2d99f677771032a7c10f604d787995d82481bd15edd276f20d9da12e81255a"
+    }
+  }
+}
