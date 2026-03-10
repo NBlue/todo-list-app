@@ -1,13 +1,21 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from 'react-native';
 
-import { Dashboard } from "@/components/dashboard";
-import { Navbar } from "@/components/navbar";
-import { ProtectedRoute } from "@/components/protected-route";
-import { ThemedText } from "@/components/themed-text";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Dashboard } from '@/components/dashboard';
+import { Navbar } from '@/components/navbar';
+import { ProtectedRoute } from '@/components/protected-route';
+import { ThemedText } from '@/components/themed-text';
+import { useNotification } from '@/context/NotificationsContext';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
   const { top } = useSafeAreaInsets();
+  const { notification, expoPushToken, devicePushToken, error } =
+    useNotification();
+
+  if (error) return <></>;
+
+  console.log({ notification, expoPushToken, devicePushToken, error });
+
   return (
     <ProtectedRoute>
       <View style={[styles.container, { paddingTop: top }]}>
@@ -46,14 +54,14 @@ const styles = StyleSheet.create({
   hero: {
     paddingHorizontal: 16,
     paddingVertical: 24,
-    alignItems: "center",
+    alignItems: 'center',
   },
   heroTitle: {
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 12,
   },
   heroSubtitle: {
-    textAlign: "center",
+    textAlign: 'center',
     opacity: 0.8,
     paddingHorizontal: 24,
   },

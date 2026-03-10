@@ -10,7 +10,10 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.nam14sotatek.todoapp"
+      "bundleIdentifier": "com.nam14sotatek.todoapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +24,8 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.nam14sotatek.todoapp"
+      "package": "com.nam14sotatek.todoapp",
+      "googleServicesFile": "./firebase/google-services.json"
     },
     "web": {
       "output": "static",
@@ -40,11 +44,19 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      "expo-notifications"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "1e11c6be-32d1-4b85-9daa-49b61fc27592"
+      }
+    },
+    "owner": "nam14-sotatek"
   }
 }
