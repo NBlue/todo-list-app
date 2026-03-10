@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "761187680269",
+    "project_id": "todolist-nblue151",
+    "storage_bucket": "todolist-nblue151.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761187680269:android:b11ed0d8bcb6df4ec49544",
+        "android_client_info": {
+          "package_name": "com.nam14sotatek.todoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeqUYFJaTBXOxGv8k1FSn4MBE1WApMJ_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
