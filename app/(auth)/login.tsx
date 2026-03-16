@@ -1,15 +1,23 @@
-import { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, useForm } from 'react-hook-form';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import { z } from 'zod';
-import { Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 
 import { AuthLayout } from '@/components/auth-layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useAuthGuard } from '@/hooks/use-auth-guard';
 import { useAuth } from '@/hooks/use-auth';
+import { useAuthGuard } from '@/hooks/use-auth-guard';
+import Feather from '@expo/vector-icons/Feather';
 import { router } from 'expo-router';
+import { useState } from 'react';
 
 const loginSchema = z.object({
   email: z
@@ -27,6 +35,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 export default function LoginPage() {
   const { isLoading: isAuthLoading, shouldShowContent } = useAuthGuard();
   const { login, isLoggingIn } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     control,
@@ -64,7 +73,10 @@ export default function LoginPage() {
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <ScrollView keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+        >
           <Controller
             control={control}
             name="email"
@@ -86,15 +98,37 @@ export default function LoginPage() {
             control={control}
             name="password"
             render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                label="Password"
-                placeholder="Enter your password"
-                value={value}
-                onChangeText={onChange}
-                onBlur={onBlur}
-                secureTextEntry
-                error={errors.password?.message}
-              />
+              <View style={{ position: 'relative' }}>
+                <Input
+                  label="Password"
+                  placeholder="Enter your password"
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  secureTextEntry={!showPassword}
+                  error={errors.password?.message}
+                />
+                <View
+                  style={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 30,
+                    bottom: 16,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <TouchableOpacity
+                    onPress={() => setShowPassword(!showPassword)}
+                  >
+                    <Feather
+                      name={showPassword ? 'eye' : 'eye-off'}
+                      size={20}
+                      color="gray"
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
             )}
           />
 

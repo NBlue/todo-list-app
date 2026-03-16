@@ -2,8 +2,10 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { router } from 'expo-router';
 
 import { authApi } from '@/lib/api/auth';
+import { notificationApi } from '@/lib/api/notification';
 import { queryKeys } from '@/lib/react-query';
 import { useAuthStore } from '@/store/auth-store';
+import { useNotificationStore } from '@/store/notification-store';
 import type { LoginRequest, RegisterRequest } from '@/types/api';
 
 export const useAuth = () => {
@@ -15,6 +17,7 @@ export const useAuth = () => {
     isAuthenticated,
     user,
   } = useAuthStore();
+  const { fcmToken, setFcmToken } = useNotificationStore();
 
   const loginMutation = useMutation({
     mutationFn: authApi.login,
@@ -26,7 +29,8 @@ export const useAuth = () => {
 
       router.replace('/(tabs)');
     },
-    onError: () => {
+    onError: (error) => {
+      console.error('ERR: ', error);
       // Error handled by caller
     },
   });
@@ -51,9 +55,21 @@ export const useAuth = () => {
   const login = (data: LoginRequest) => loginMutation.mutate(data);
   const register = (data: RegisterRequest) => registerMutation.mutate(data);
   const logout = () => {
-    logoutStore();
-    queryClient.clear();
-    router.replace('/login' as never);
+    (async () => {
+      // Unregister device token on backend before clearing auth
+      if (fcmToken) {
+        try {
+          await notificationApi.unregisterDevice(fcmToken);
+        } catch {
+          // Ignore unregister failures to avoid blocking logout UX
+        }
+      }
+
+      setFcmToken(null);
+      logoutStore();
+      queryClient.clear();
+      router.replace('/login' as never);
+    })();
   };
 
   return {

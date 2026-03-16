@@ -11,6 +11,12 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.nam14sotatek.todoapp",
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"]
+      },
+      "entitlements": {
+        "aps-environment": "production"
+      },
       "googleServicesFile": "./firebase/GoogleService-Info.plist"
     },
     "android": {
